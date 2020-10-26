@@ -4,7 +4,7 @@ ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 ENV PATH /opt/conda/bin:$PATH
 
 RUN apt-get update --fix-missing && \
-  apt-get install -y wget bzip2 ca-certificates curl git && \
+  apt-get install -y wget bzip2 ca-certificates curl git libcairo2-dev && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
@@ -17,3 +17,4 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.3-Linux
   echo "conda activate base" >> ~/.bashrc
 
 RUN conda install -c rdkit rdkit
+RUN pip install cairosvg
